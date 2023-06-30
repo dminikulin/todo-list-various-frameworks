@@ -2,7 +2,7 @@ import axios from "axios"
 import { useContext, useState } from "react"
 import { NotesContext } from "../App"
 
-export default function SingleNote({note, onChange}) {
+export default function SingleNote({note}) {
     const {notes, setNotes} = useContext(NotesContext)
     const [isEditing, setEditing] = useState(false)
 

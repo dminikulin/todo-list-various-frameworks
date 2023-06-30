@@ -27,16 +27,6 @@ export default function App() {
 
   }, [])
 
-  const changeNote = (noteToChange) => {
-    setNotes(currentNotes => {
-      return currentNotes.map(note => {
-        if (note.id === noteToChange.id) return noteToChange
-        else return note
-      })
-    })
-  }
-
-
   return (
     <div className="main_container">
       <NotesContext.Provider value={{notes, setNotes}}>
@@ -45,7 +35,7 @@ export default function App() {
           <NoteForm />
           {error && <p>{error}</p>}
           {loading && <p>Loading...</p>}
-          <NoteList notes={notes} onChange={changeNote} />
+          <NoteList notes={notes}/>
         </div>
       </NotesContext.Provider>
     </div>
