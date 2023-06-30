@@ -1,11 +1,6 @@
 {
   "notes": [
     {
-      "title": "Clean windows",
-      "done": false,
-      "id": 3
-    },
-    {
       "title": "Create the same todo list app with React, but using Typescript",
       "done": false,
       "id": 4
