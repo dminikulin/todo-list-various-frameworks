@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Water roses",
+      "done": false
+    },
+    {
+      "id": 2,
+      "title": "Do laundry",
+      "done": false
+    }
+  ]
+}
