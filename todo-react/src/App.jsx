@@ -35,7 +35,7 @@ export default function App() {
           <NoteForm />
           {error && <p>{error}</p>}
           {loading && <p>Loading...</p>}
-          <NoteList notes={notes}/>
+          <NoteList/>
         </div>
       </NotesContext.Provider>
     </div>

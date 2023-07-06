@@ -2,8 +2,13 @@
   "notes": [
     {
       "title": "Create the same todo list app with React, but using Typescript",
-      "done": false,
+      "done": true,
       "id": 4
+    },
+    {
+      "title": "Write reducer function",
+      "done": false,
+      "id": 6
     }
   ]
 }

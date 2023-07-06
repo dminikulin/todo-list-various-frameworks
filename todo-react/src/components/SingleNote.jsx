@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import { NotesContext } from "../App"
 
 export default function SingleNote({note}) {
-    const {notes, setNotes} = useContext(NotesContext)
+    const {setNotes} = useContext(NotesContext)
     const [isEditing, setEditing] = useState(false)
 
     const handleUpdate = async (noteToUpdate) => {

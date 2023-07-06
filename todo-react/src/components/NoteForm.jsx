@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import { NotesContext } from "../App"
 
 export default function NoteForm() {
-  const {notes, setNotes} = useContext(NotesContext)
+  const {setNotes} = useContext(NotesContext)
   const [newNote, setNewNote] = useState("")
 
   const addNote = async () => {
