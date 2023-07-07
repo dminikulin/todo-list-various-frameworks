@@ -5,10 +5,11 @@ import { NotesContext } from "../App"
 export default function NoteList() {
 
     const {notes} = useContext(NotesContext)
+    console.log(notes)
 
     return (
         <div className="note_list">
-            {!notes || notes.length === 0 && <p>No notes so far</p>}
+            {!notes && <p>No notes so far</p>}
             {notes && notes.map(note => {
                 return (
                     <SingleNote key={note.id} note={note}/>

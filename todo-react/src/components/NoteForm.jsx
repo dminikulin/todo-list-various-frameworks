@@ -3,7 +3,7 @@ import { useContext, useState } from "react"
 import { NotesContext } from "../App"
 
 export default function NoteForm() {
-  const {setNotes} = useContext(NotesContext)
+  const {dispatch} = useContext(NotesContext)
   const [newNote, setNewNote] = useState("")
 
   const addNote = async () => {
@@ -15,7 +15,7 @@ export default function NoteForm() {
       const response = await axios.post(
         'http://localhost:4000/notes', {title: newNote, done: false}
       )
-      setNotes(currentNotes => {return [...currentNotes, response.data]})
+      dispatch({type: "ADD", payload: response.data})
       setNewNote("")
     }
     catch(error){

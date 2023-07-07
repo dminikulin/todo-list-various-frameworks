@@ -3,17 +3,15 @@ import { useContext, useState } from "react"
 import { NotesContext } from "../App"
 
 export default function SingleNote({note}) {
-    const {setNotes} = useContext(NotesContext)
+    const {dispatch} = useContext(NotesContext)
     const [isEditing, setEditing] = useState(false)
 
     const handleUpdate = async (noteToUpdate) => {
         try{
-            await axios.patch(
+            const response = await axios.patch(
                 'http://localhost:4000/notes/' + note.id, {title: noteToUpdate.title, done: noteToUpdate.done}
             )
-            setNotes(currentNotes => {
-                return currentNotes.map(n => n.id === noteToUpdate.id ? noteToUpdate : n)
-            })
+            dispatch({type: "UPDATE", payload: response.data})
         }catch(error){
             console.error('Failed to mark note: ' + error)
         }
@@ -22,9 +20,7 @@ export default function SingleNote({note}) {
     const handleDelete = async () => {
         try{
             await axios.delete('http://localhost:4000/notes/' + note.id)
-            setNotes(currentNotes => {
-                return currentNotes.filter(n => n.id !== note.id)
-            })
+            dispatch({type: "DELETE", payload: note})
         }catch (error){
             console.error('Failed to delete note: ' + error)
         }
