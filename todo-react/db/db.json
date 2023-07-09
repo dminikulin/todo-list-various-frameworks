@@ -1,14 +1,14 @@
 {
   "notes": [
     {
-      "title": "Create the same todo list app with React, but using Typescript",
-      "done": true,
-      "id": 4
-    },
-    {
       "title": "Write reducer function",
       "done": true,
       "id": 6
+    },
+    {
+      "title": "Clear a phone speaker from toothpaste",
+      "done": false,
+      "id": 7
     }
   ]
 }

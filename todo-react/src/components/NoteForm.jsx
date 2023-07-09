@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useContext, useState } from "react"
-import { NotesContext } from "../App"
+import { DispatchContenxt } from "../App"
 
 export default function NoteForm() {
-  const {dispatch} = useContext(NotesContext)
+  const {dispatch} = useContext(DispatchContenxt)
   const [newNote, setNewNote] = useState("")
 
   const addNote = async () => {

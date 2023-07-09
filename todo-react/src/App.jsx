@@ -4,7 +4,7 @@ import NoteList from "./components/NoteList"
 import axios from "axios"
 import { NotesReducer } from "./hooks/NotesReducer"
 
-export const NotesContext = createContext()
+export const DispatchContext = createContext()
 
 export default function App() {
   const [error, setError] = useState()
@@ -30,7 +30,7 @@ export default function App() {
 
   return (
     <div className="main_container">
-      <NotesContext.Provider value={{notes, dispatch}}>
+      <DispatchContext.Provider value={{notes, dispatch}}>
         <div className="note_container">
           <h1>Dima's todo list</h1>
           <NoteForm />
@@ -38,7 +38,7 @@ export default function App() {
           {loading && <p>Loading...</p>}
           <NoteList/>
         </div>
-      </NotesContext.Provider>
+      </DispatchContext.Provider>
     </div>
   )
 }

@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useContext, useState } from "react"
-import { NotesContext } from "../App"
+import { DispatchContenxt } from "../App"
 
 export default function SingleNote({note}) {
-    const {dispatch} = useContext(NotesContext)
+    const {dispatch} = useContext(DispatchContenxt)
     const [isEditing, setEditing] = useState(false)
 
     const handleUpdate = async (noteToUpdate) => {
@@ -32,7 +32,8 @@ export default function SingleNote({note}) {
         content = (
             <>
                 <input type="text" value={note.title}
-                    onChange={e => handleUpdate({...note, title: e.target.value})} />
+                    onChange={e => {handleUpdate({...note, title: e.target.value})}} 
+                    onKeyDown={e => {if(e.key === "Enter") setEditing(false)}}/>
                 <button onClick={() => {setEditing(false)}}>Save</button>
             </>
         )

@@ -1,11 +1,6 @@
-import { useContext } from "react"
 import SingleNote from "./SingleNote"
-import { NotesContext } from "../App"
 
-export default function NoteList() {
-
-    const {notes} = useContext(NotesContext)
-    console.log(notes)
+export default function NoteList({notes}) {
 
     return (
         <div className="note_list">
