@@ -1,14 +1,14 @@
 {
   "notes": [
     {
-      "title": "Create the same todo list app with React, but using Typescript",
-      "done": true,
-      "id": 4
+      "title": "Create the same app, but using React Redux",
+      "done": false,
+      "id": 6
     },
     {
       "title": "Water flowers",
       "done": false,
-      "id": 5
+      "id": 7
     }
   ]
 }

@@ -6,6 +6,12 @@ export interface Note {
     id: number
 }
 
+type NoteActionKind = "GET" | "ADD" | "UPDATE" | "DELETE"
+export interface NoteAction {
+    type: NoteActionKind,
+    payload: any
+}
+
 export interface NoteContext{
-    setNotes: React.Dispatch<React.SetStateAction<Note[] | null>>
+    dispatch: React.Dispatch<NoteAction>
 }

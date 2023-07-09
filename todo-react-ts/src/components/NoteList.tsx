@@ -9,7 +9,7 @@ type NoteListProps = {
 export const NoteList: React.FC<NoteListProps> = ({ noteList }) => {
     return (
         <div className="note_list">
-            {!noteList || noteList.length === 0 && <p>No notes so far</p>}
+            {!noteList && <p>No notes so far</p>}
             {noteList && noteList.map(note => {
                 return (
                     <SingleNote key={note.id} note={note} />

@@ -1,24 +1,22 @@
 import React, { useState } from 'react'
 import { Note } from '../interfaces'
 import axios from 'axios'
-import { useNotesContext } from '../App'
+import { useNotesDispatchContext } from '../App'
 
 type SingleNoteProps = {
     note: Note
 }
 
 export const SingleNote: React.FC<SingleNoteProps> = ({note}) => {
-    const {setNotes} = useNotesContext()
+    const {dispatch} = useNotesDispatchContext()
     const [isEditing, setEditing] = useState<boolean>(false)
 
     const handleUpdate = async (noteToUpdate: Note) => {
         try{
-            await axios.patch(
+            const response = await axios.patch(
                 'http://localhost:4000/notes/' + note.id, {title: noteToUpdate.title, done: noteToUpdate.done}
             )
-            setNotes(currentNotes => {
-                return currentNotes!.map(n => n.id === noteToUpdate.id ? noteToUpdate : n)
-            })
+            dispatch({type: "UPDATE", payload: response.data})
         }catch(error){
             console.error('Failed to mark note: ' + error)
         }
@@ -27,9 +25,7 @@ export const SingleNote: React.FC<SingleNoteProps> = ({note}) => {
     const handleDelete = async () => {
         try{
             await axios.delete('http://localhost:4000/notes/' + note.id)
-            setNotes(currentNotes => {
-                return currentNotes!.filter(n => n.id !== note.id)
-            })
+            dispatch({type: "DELETE", payload: note})
         }catch (error){
             console.error('Failed to delete note: ' + error)
         }
@@ -41,7 +37,8 @@ export const SingleNote: React.FC<SingleNoteProps> = ({note}) => {
         editContent = (
             <>
                 <input type="text" value={note.title}
-                    onChange={e => handleUpdate({...note, title: e.target.value})} />
+                    onChange={e => handleUpdate({...note, title: e.target.value})}
+                    onKeyDown={e => {if (e.key === "Enter") setEditing(false)}} />
                 <button onClick={() => {setEditing(false)}}>Save</button>
             </>
         )

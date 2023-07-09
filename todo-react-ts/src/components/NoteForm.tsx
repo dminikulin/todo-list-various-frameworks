@@ -1,10 +1,9 @@
 import axios from "axios";
 import React, { useState } from "react";
-import { useNotesContext } from "../App";
-import { Note } from "../interfaces";
+import { useNotesDispatchContext } from "../App";
 
 export const NoteForm: React.FC = () => {
-    const {setNotes} = useNotesContext()
+    const {dispatch} = useNotesDispatchContext()
     const [newNote, setNewNote] = useState<string>("")
 
     const addNote = async () => {
@@ -16,7 +15,7 @@ export const NoteForm: React.FC = () => {
             const response = await axios.post(
                 'http://localhost:4000/notes', { title: newNote, done: false }
             )
-            setNotes(currentNotes => {return [...currentNotes as Note[], response.data]})
+            dispatch({type: "ADD", payload: response.data})
             setNewNote("")
         } catch (error) {
             console.error('Failed to add note: ' + error)

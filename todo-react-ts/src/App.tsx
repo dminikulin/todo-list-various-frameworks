@@ -1,17 +1,19 @@
 import axios from "axios"
-import React, { createContext, useContext, useEffect, useState } from "react"
-import { Note, NoteContext } from "./interfaces"
+import React, { createContext, useContext, useEffect, useReducer, useState } from "react"
+import { NoteContext } from "./interfaces"
 import { NoteForm } from "./components/NoteForm"
 import { NoteList } from "./components/NoteList"
+import { NotesReducer } from "./hooks/NotesReducer"
 
-export const NotesContext = createContext<NoteContext>({
-  setNotes: () => {}
+export const NoteDispatchContext = createContext<NoteContext>({
+  dispatch: () => {}
 })
 
-export const useNotesContext = () => useContext(NotesContext)
+export const useNotesDispatchContext = () => useContext(NoteDispatchContext)
 
 export const App: React.FC = () => {
-  const [notes, setNotes] = useState<Note[] | null>(null)
+  const [notes, dispatch] = useReducer(NotesReducer, [])
+  // const [notes, setNotes] = useState<Note[] | null>(null)
   const [error, setError] = useState<string | null>(null)
   const [loading, setLoading] = useState<boolean>(true)
 
@@ -19,7 +21,7 @@ export const App: React.FC = () => {
     const fetchNotes = async () => {
       try{
         const response = await axios.get('http://localhost:4000/notes')
-        setNotes(response.data)
+        if(response.statusText === "OK") dispatch({type: "GET", payload: response.data})
         setLoading(false)
       }catch(error){
         console.error('Failed to get notes: ' + error)
@@ -33,7 +35,7 @@ export const App: React.FC = () => {
 
   return (
     <div className="main_container">
-      <NotesContext.Provider value={{setNotes}}>
+      <NoteDispatchContext.Provider value={{dispatch}}>
       <div className="note_container">
         <h1>Dima's todo list</h1>
         <NoteForm/>
@@ -41,7 +43,7 @@ export const App: React.FC = () => {
           {loading && <p>Loading...</p>}
           <NoteList noteList={notes}/>
       </div>
-      </NotesContext.Provider>
+      </NoteDispatchContext.Provider>
     </div>
   )
 }
