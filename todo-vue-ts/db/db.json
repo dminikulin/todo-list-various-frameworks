@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "id": 1,
+      "title": "Water flowers",
+      "done": true
+    },
+    {
+      "title": "Create the same app, but using React Redux",
+      "done": false,
+      "id": 2
+    }
+  ]
+}

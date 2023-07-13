@@ -1,0 +1,7 @@
+<template>
+  <Todo></Todo>
+</template>
+
+<script setup lang="ts">
+import Todo from './components/Todo.vue';
+</script>
