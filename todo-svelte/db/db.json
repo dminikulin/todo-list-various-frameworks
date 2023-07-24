@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "title": "Write the same project with Svelte, but using Typescript",
+      "done": false,
+      "id": 6
+    },
+    {
+      "title": "Clear a phone speaker from toothpaste",
+      "done": true,
+      "id": 7
+    }
+  ]
+}
