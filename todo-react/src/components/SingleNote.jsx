@@ -1,9 +1,9 @@
 import axios from "axios"
 import { useContext, useState } from "react"
-import { DispatchContenxt } from "../App"
+import { DispatchContext } from "../App"
 
 export default function SingleNote({note}) {
-    const {dispatch} = useContext(DispatchContenxt)
+    const {dispatch} = useContext(DispatchContext)
     const [isEditing, setEditing] = useState(false)
 
     const handleUpdate = async (noteToUpdate) => {

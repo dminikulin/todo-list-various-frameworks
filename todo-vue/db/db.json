@@ -2,13 +2,13 @@
   "notes": [
     {
       "id": 1,
-      "title": "Water roses",
-      "done": false
+      "title": "Throw away flowers",
+      "done": true
     },
     {
-      "id": 2,
-      "title": "Do laundry",
-      "done": false
+      "title": "Create the same app using Vuex",
+      "done": false,
+      "id": 3
     }
   ]
 }
