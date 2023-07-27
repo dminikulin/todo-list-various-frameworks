@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "title": "Write the same project with Svelte, but using Typescript",
+      "done": true,
+      "id": 6
+    },
+    {
+      "title": "Do an upper body workout",
+      "done": false,
+      "id": 7
+    }
+  ]
+}
