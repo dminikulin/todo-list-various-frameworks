@@ -1,0 +1,14 @@
+{
+  "notes": [
+    {
+      "title": "Sell old laptop",
+      "done": false,
+      "id": 1
+    },
+    {
+      "title": "Create a todo app with Solid.js",
+      "done": true,
+      "id": 2
+    }
+  ]
+}
